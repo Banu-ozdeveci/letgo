@@ -21,9 +21,9 @@ const initialMessages=[
 
 function MessagesScreen(props) {
     const [messages,setMessages]= useState(initialMessages);
+    const [refreshing,setRefreshing]=useState(false);
 
     const handleDelete= message => {
-        //delete the message from message and than from the server
 const newMessages=messages.filter(m=>m.id !== message.id)
 setMessages(newMessages)
     }
@@ -33,8 +33,24 @@ setMessages(newMessages)
             <FlatList 
             data={messages} 
             keyExtractor={message =>message.id.toString()}
-            renderItem={({item}) => <ListItem renderRightActions={()=><ListItemDeleteAction onPress={()=>handleDelete()}/>} onPress={()=>console.log("tapped",id)} image={item.image} title={item.title} subTitle={item.description}/>}
-            ItemSeparatorComponent={ListItemSeparator}/>
+            renderItem={({item}) => <ListItem renderRightActions={()=><ListItemDeleteAction onPress={()=>handleDelete(item)}/>} onPress={()=>console.log("tapped",item.id)} image={item.image} title={item.title} subTitle={item.description}/>}
+            ItemSeparatorComponent={ListItemSeparator}
+            refreshing={refreshing}
+            onRefresh={()=>{
+                setMessages([
+                    {
+                        id:1,
+                        title:'T1',
+                        description:"D1",
+                        image:require("../assets/mosh.jpg")
+                    },
+                    {
+                        id:2,
+                        title:'T2',
+                        description:"D2",
+                        image:require("../assets/mosh.jpg")
+                    },])
+            }}/>
             
         </Screen>
     );

@@ -1,15 +1,38 @@
 import React from 'react';
 import CardComponent from '../components/CardComponent';
-import {View,StyleSheet} from "react-native"
+import {View,StyleSheet,FlatList} from "react-native"
+import Screen from '../components/Screen';
+
+const listings= [
+    {
+        id:1,
+        title:"Red Jacket For Sale",
+        price:"$100",
+        image: require("../assets/jacket.jpg")
+    },
+    {
+        id:2,
+        title:"Red Couch in Great Condition",
+        price:"$200",
+        image: require("../assets/couch.jpg")
+    }
+]
+
+
 
 function ListingScreen(props) {
     return (
-        <View style={styles.container}>
+        <Screen>
+<FlatList 
+data={listings}
+keyExtractor={(item)=>item.id.toString()}
+renderItem={({item})=><CardComponent title={item.title} subTitle={item.price} image={item.image}/>}
 
-            <CardComponent title="Red Jacket for sale" subTitle="$100" image={require("../assets/jacket.jpg")}/>
-            <CardComponent title="Couch for sale" subTitle="$100" image={require("../assets/couch.jpg")}/>
 
-        </View>
+
+/>
+   
+        </Screen>
     );
 }
 
