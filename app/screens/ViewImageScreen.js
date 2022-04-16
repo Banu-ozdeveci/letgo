@@ -5,9 +5,15 @@ import {MaterialCommunityIcons} from "@expo/vector-icons"
 function ViewImageScreen(props) {
     return (
 <View style={styles.container}>
-<View style={styles.closeIcon}></View>
-<View style={styles.deleteIcon}></View>
-<MaterialCommunityIcons name="email" size="20"/>
+<View style={styles.closeIcon}>
+
+<MaterialCommunityIcons name="close" size={35} color="white"/>
+</View>
+<View style={styles.deleteIcon}>
+
+<MaterialCommunityIcons name="trash-can-outline" size={35} color="white"/>
+</View>
+
 
     <Image resizeMode="contain" style={styles.image} source= {require("../assets/chair.jpg")}></Image>
 </View>
@@ -16,9 +22,7 @@ function ViewImageScreen(props) {
 }
 const styles = StyleSheet.create({
     closeIcon:{
-        backgroundColor:"pink",
-        width:50,
-        height:50,
+        
         position:"absolute",
         top:40,
         left:30,
@@ -27,9 +31,7 @@ const styles = StyleSheet.create({
         backgroundColor:"black",
     },
     deleteIcon:{
-        backgroundColor:"#4ecdc4",
-        width:50,
-        height:50,
+        
         position:"absolute",
         top:40,
         right:30,
