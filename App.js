@@ -12,8 +12,16 @@ import AccountScreen from './app/screens/AccountScreen';
 import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
 
+const categories= [
+  {label:"Furniture", value:1},
+  {label:"Clothing", value:2},
+  {label:"Cameras", value:3},
+
+]
+
 
 export default function App() {
+  const [category,setCategory]=useState(categories[0]);
   const [input,setInput]=useState("")
   console.log(input);
   const [isNew,setIsNew] = useState(false)
@@ -23,7 +31,7 @@ export default function App() {
 <Switch value={isNew}  onValueChange={(input)=>setIsNew(input)}/>
 <AppTextInput placeholder="hi" icon="email"/>
 <AppTextInput placeholder="hi" icon="email"/>
-<AppPicker placeholder="picker"/>
+<AppPicker icon="apps" placeholder="picker" items={categories} selectedItem={category} onSelectItem={item=>setCategory(item.label)}/>
 
     </Screen>)
 }
