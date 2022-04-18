@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         backgroundColor:colors.white,
         marginBottom:15,
         overflow:"hidden",
-        margin:10,
+        margin:5,
         
     },
     image:{
