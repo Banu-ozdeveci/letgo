@@ -5,7 +5,7 @@ import {useFormikContext} from "formik"
 
 
 
-function AppFormField({name, ...otherProps}) {
+function AppFormField({name,width, ...otherProps}) {
 
 const {setFieldTouched,handleChange,errors,touched}=useFormikContext();
 
@@ -13,6 +13,7 @@ const {setFieldTouched,handleChange,errors,touched}=useFormikContext();
         <>
         
         <AppTextInput 
+        width={width}
         {...otherProps}
 onBlur={()=>setFieldTouched(name)}
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from "yup";
+import CategoryPickerItem from '../components/CategoryPickerItem';
 
 import {AppForm,AppFormField,AppFormPicker,SubmitButton} from "../components/forms";
 import Screen from '../components/Screen';
@@ -15,9 +16,15 @@ const validationSchema = Yup.object().shape({
 })
 
     const categories =[
-        {label:"Furniture", value:1},
-        {label:"Clothing", value:2},
-        {label:"Camera", value:3}
+        {label:"Furniture", value:1, backgroundColor:"red", icon:"apps"},
+        {label:"Clothing", value:2, backgroundColor:"green", icon:"apps"},
+        {label:"Camera", value:3, backgroundColor:"blue", icon:"apps"},
+        {label:"Furniture", value:4, backgroundColor:"red", icon:"apps"},
+        {label:"Clothing", value:5, backgroundColor:"green", icon:"apps"},
+        {label:"Media&Books", value:6, backgroundColor:"blue", icon:"apps"},
+        {label:"Furniture", value:7, backgroundColor:"red", icon:"apps"},
+        {label:"Clothing", value:8, backgroundColor:"green", icon:"apps"},
+        {label:"Camera", value:9, backgroundColor:"blue", icon:"apps"}
 
 
     ]
@@ -32,8 +39,8 @@ function ListingEditField(props) {
             
             >
 <AppFormField maxLength={255} name="title" placeholder="Title"/>
-<AppFormField maxLength={6} keyboardType="numeric" name="price" placeholder="Price"/>
-<AppFormPicker items={categories} name="category" placeholder="Category"/>
+<AppFormField maxLength={6} width={120} keyboardType="numeric" name="price" placeholder="Price"/>
+<AppFormPicker numberOfColumns={3} PickerItemComponent={CategoryPickerItem} items={categories} name="category" placeholder="Category"/>
 
 <AppFormField maxLength={255} multiline name="description" numberOfLines={3} placeholder="Description"/>
 <SubmitButton title="Post" />
