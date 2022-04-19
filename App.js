@@ -11,28 +11,15 @@ import ListItem from './app/components/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
 import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
-
-const categories= [
-  {label:"Furniture", value:1},
-  {label:"Clothing", value:2},
-  {label:"Cameras", value:3},
-
-]
+import LoginScreen from './app/screens/LoginScreen';
+import ListingEditField from './app/screens/ListingEditField';
 
 
 export default function App() {
-  const [category,setCategory]=useState(categories[0]);
-  const [input,setInput]=useState("")
-  console.log(input);
-  const [isNew,setIsNew] = useState(false)
-
+  
   return (
-    <Screen>
-<Switch value={isNew}  onValueChange={(input)=>setIsNew(input)}/>
-<AppTextInput placeholder="hi" icon="email"/>
-<AppTextInput placeholder="hi" icon="email"/>
-<AppPicker icon="apps" placeholder="picker" items={categories} selectedItem={category} onSelectItem={item=>setCategory(item.label)}/>
-
-    </Screen>)
+    <ListingEditField/>
+  )
+  
 }
 

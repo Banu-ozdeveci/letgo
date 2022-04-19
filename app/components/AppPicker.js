@@ -17,8 +17,10 @@ function AppPicker({icon,items,placeholder,selectedItem,onSelectItem}) {
 
         <View style={styles.container}>
 {icon && <MaterialCommunityIcons name={icon} size={20} color={colors.secondary} style={styles.icon}/>}
-{selectedItem? <AppText style={styles.text}>{selectedItem.label }</AppText>: 
-<AppText style={styles.text}>{placeholder}</AppText>     }
+{selectedItem ?              <AppText style={styles.text}>{selectedItem }</AppText>
+     :      <AppText style={styles.placeholder}>{placeholder }</AppText>
+    }
+
 <MaterialCommunityIcons name="chevron-down" size={20} color={colors.secondary}/>
 
     </View>
@@ -31,9 +33,9 @@ function AppPicker({icon,items,placeholder,selectedItem,onSelectItem}) {
            <FlatList
            data={items}
            keyExtractor={item=>item.value.toString()}
-           renderItem={({item})=><PickerItem label={item.label}
-           onPress={(item)=>{setModalVisible(false); onSelectItem(item)}}
-           />}/>
+           renderItem={({item})=>(<PickerItem label={item.label}
+           onPress={()=>{setModalVisible(false); onSelectItem(item)}}
+           />)}/>
             </Screen>
         </Modal>
       </>
@@ -57,6 +59,10 @@ const styles = StyleSheet.create({
   
     icon:{
         marginRight:10,
+    },
+    placeholder:{
+        color:defaultStyles.colors.medium,
+        flex:1,
     }
 })
 
